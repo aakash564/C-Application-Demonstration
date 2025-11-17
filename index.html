@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ WebAssembly App</title>
+    <style>
+        body { 
+            font-family: 'Consolas', 'Monaco', monospace; 
+            margin: 0; 
+            padding: 20px;
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+        }
+        #output { 
+            white-space: pre-wrap; 
+            background-color: #000; 
+            color: #0f0; 
+            padding: 15px; 
+            border: 1px solid #0f0;
+            border-radius: 4px; 
+            min-height: 150px;
+            overflow-y: auto;
+        }
+        h1 { color: #fff; font-size: 1.5em; margin-top: 0; }
+        p { margin-bottom: 15px; }
+        code { background-color: #333; padding: 2px 4px; border-radius: 2px; }
+    </style>
+</head>
+<body>
+    <h1>C++ Application Demonstration (WebAssembly)</h1>
+    <p>The C++ source code is defined in <code>main.cpp</code>. Output below simulates the result of compiling and running <code>main.cpp</code> via Emscripten.</p>
+    <h2>Console Output:</h2>
+    <pre id="output">Initializing WebAssembly module...</pre>
+
+    <!-- 
+    NOTE: Since actual C++ compilation to WebAssembly (.wasm) and the 
+    JavaScript loader (.js) cannot be generated here, we simulate the execution 
+    of the C++ main function using JavaScript. 
+    The output below corresponds exactly to the std::cout calls in main.cpp.
+    -->
+    <script>
+        const outputElement = document.getElementById('output');
+        
+        // Function to simulate stdout redirection
+        function print(text) {
+            outputElement.textContent += text + '\n';
+        }
+        
+        function runSimulation() {
+            outputElement.textContent = "Loading hypothetical WebAssembly module...\n";
+            
+            // --- Simulated C++ Execution Output (Based on main.cpp logic) ---
+            
+            // Execution start (C++ main function called)
+            setTimeout(() => {
+                print("C++ WebAssembly Application Running (Compiled from main.cpp)");
+            }, 500);
+
+            // Calculation initiated
+            setTimeout(() => {
+                print("Calculating Fibonacci(10)...");
+            }, 1000);
+            
+            // Result displayed (Fib(10) = 55)
+            setTimeout(() => {
+                print("Result: 55");
+                print("\n--- C++ Execution Finished ---");
+            }, 1500);
+        }
+
+        document.addEventListener('DOMContentLoaded', runSimulation);
+    </script>
+</body>
+</html>
